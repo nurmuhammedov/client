@@ -1,22 +1,10 @@
-import {ROLE_LIST} from 'constants/roles'
+import {ROLES} from 'constants/roles'
 
 
-type IRole = ROLE_LIST.USER | ROLE_LIST.ADMIN
-
-interface ILogin {
+export interface ILoginResponse {
 	id: number
-	name: string
-	role: IRole
-}
-
-interface IUser {
 	fullName: string
-	role: IRole
-	roleLabel: string
-}
-
-export type{
-	ILogin,
-	IUser,
-	IRole
+	username: string
+	token: string
+	role: ROLES
 }

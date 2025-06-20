@@ -13,7 +13,7 @@ import PageIcon from './PageIcon'
 import Router from './Router'
 import Layout from './Layout'
 import Loader from './LoaderBlock'
-import CutDiagram from './CutDiagram'
+import Checkbox from './Checkbox'
 import Alert from './Alert'
 import Card from './Card'
 import Form from './Form'
@@ -22,17 +22,16 @@ import HR from './HR'
 
 
 export * from './UI'
-export * from './HOC'
 
 export {
 	DeleteButton,
 	DeleteModal,
 	Pagination,
+	Checkbox,
 	ReactTable,
 	PageIcon,
 	FilterInput,
 	EditButton,
-	CutDiagram,
 	PageTitle,
 	AlertItem,
 	EditModal,

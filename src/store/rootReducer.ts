@@ -1,6 +1,6 @@
-import ordersReducer from 'store/orders/orders.slice'
+import { reducer as authReducer } from './auth/auth.slice'
 
 
 export const rootReducer = {
-	orders: ordersReducer
+	auth: authReducer
 }

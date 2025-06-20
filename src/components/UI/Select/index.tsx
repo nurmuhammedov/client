@@ -1,6 +1,6 @@
 import {ISelect, ISelectOption} from 'interfaces/form.interface'
 import {forwardRef, LegacyRef, useMemo} from 'react'
-import getSelectStyles from 'helpers/select'
+import getSelectStyles from 'utilities/select'
 import {useTranslation} from 'react-i18next'
 import {SelectIcon} from 'assets/icons'
 import {Input} from 'components'

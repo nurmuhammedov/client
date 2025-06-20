@@ -1,28 +1,17 @@
-import {ROLE_LABEL, ROLE_LIST} from 'constants/roles'
-import {ILogin, IRole, IUser} from 'interfaces/authentication.interface'
+import {ROLES} from 'constants/roles'
 
 
-function buildUser(userData: ILogin | undefined): IUser | null {
-	if (!userData) return null
-	return {
-		fullName: userData?.name,
-		roleLabel: ROLE_LABEL[userData?.role] ?? 'User',
-		role: ROLE_LIST.USER
-	}
-}
-
-const routeByRole = (role: IRole = ROLE_LIST.USER): string => {
+const routeByRole = (role: ROLES = ROLES.USER): string => {
 	switch (role) {
-		case ROLE_LIST.USER:
-			return '/formats'
-		case ROLE_LIST.ADMIN:
-			return '/formats'
+		case ROLES.ADMIN:
+			return '/users'
+		case ROLES.USER:
+			return '/vocabularies'
 		default:
 			return '/'
 	}
 }
 
 export {
-	buildUser,
 	routeByRole
 }

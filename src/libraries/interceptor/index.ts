@@ -1,5 +1,5 @@
 import {showErrorMessage, showMessage} from 'utilities/alert'
-import {BASE_URL} from 'configurations/environment'
+import {BASE_URL} from 'constants/environment'
 import {cleanParams} from 'utilities/common'
 import axios from 'axios'
 
@@ -14,6 +14,10 @@ instance.interceptors.request.use(
 		if (config.params) {
 			config.params = cleanParams(config.params)
 		}
+
+		const token: string = JSON.parse(localStorage.getItem('user') || '{}')?.token || ''
+		config.headers.Authorization = token ? `Bearer ${token}` : null
+
 		return config
 	},
 	error => Promise.reject(error)

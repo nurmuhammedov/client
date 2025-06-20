@@ -1,47 +1,46 @@
+import {useAuth} from 'hooks'
 import {
 	Login,
-	FormatsTable
+	UsersTable,
+	AddUser
 } from 'modules'
 import {Navigate, useRoutes} from 'react-router-dom'
 import {routeByRole} from 'utilities/authentication'
-import {ROLE_LIST} from 'constants/roles'
-import {useAppContext} from 'hooks'
+import {ROLES} from 'constants/roles'
 import {Layout} from 'components'
 
 
 function useAppRoutes() {
-	const {user} = useAppContext()
-
-	const defaultRoutes = [
-		{
-			id: 'format',
-			path: 'formats',
-			children: [
-				{
-					index: true,
-					element: <FormatsTable/>
-				}
-			]
-		}
-	]
+	const {user} = useAuth()
 
 	const url = routeByRole(user?.role)
 
 	const routes = {
-		[ROLE_LIST.ADMIN]: [
+		[ROLES.ADMIN]: [
 			{
 				path: '/',
 				element: <Layout/>,
-				children: defaultRoutes?.length ? [
+				children: [
 					{
 						index: true,
 						element: <Navigate to={url} replace/>
 					},
-					...defaultRoutes
-				] : [
 					{
-						index: true,
-						element: <></>
+						path: 'users',
+						children: [
+							{
+								index: true,
+								element: <UsersTable/>
+							},
+							{
+								path: 'add',
+								element: <AddUser/>
+							},
+							{
+								path: 'edit/:id',
+								element: <AddUser edit={true}/>
+							}
+						]
 					}
 				]
 			},
@@ -54,20 +53,24 @@ function useAppRoutes() {
 					/>
 			}
 		],
-		[ROLE_LIST.USER]: [
+		[ROLES.USER]: [
 			{
 				path: '/',
 				element: <Layout/>,
-				children: defaultRoutes?.length ? [
+				children: [
 					{
 						index: true,
 						element: <Navigate to={url} replace/>
 					},
-					...defaultRoutes
-				] : [
 					{
-						index: true,
-						element: <></>
+						id: 'vocabularies',
+						path: 'vocabularies',
+						children: [
+							{
+								index: true,
+								element: <></>
+							}
+						]
 					}
 				]
 			},

@@ -5,7 +5,7 @@ interface RoleOrder {
 	[key: string]: number
 }
 
-interface IMenuItem {
+export interface IMenuItem {
 	id: string
 	label: string
 	icon?: () => React.ReactNode
@@ -14,19 +14,8 @@ interface IMenuItem {
 	order: RoleOrder
 }
 
-interface IListResponse<T> {
+export interface IListResponse<T> {
 	count: number
 	num_pages: number
 	results: T
-}
-
-interface IIDName {
-	id: number
-	name: string
-}
-
-export type {
-	IIDName,
-	IMenuItem,
-	IListResponse
 }

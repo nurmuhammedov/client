@@ -4,7 +4,7 @@ import {showMessage} from 'utilities/alert'
 import {noopAsync} from 'utilities/common'
 
 
-const useDynamicDeleteMutation = (
+const useDelete = (
 	endpoint: string,
 	id?: string | number | boolean | null,
 	successMessage: string = 'Deleted successfully',
@@ -28,4 +28,4 @@ const useDynamicDeleteMutation = (
 	})
 }
 
-export default useDynamicDeleteMutation
+export default useDelete

@@ -1,7 +1,4 @@
-import {ISelectOption} from 'interfaces/form.interface'
-
-
-function formatDate(isoDateString: string | null | undefined): string {
+function getDateWithHours(isoDateString: string | null | undefined): string {
 	if (!isoDateString) return ''
 	const date = new Date(isoDateString)
 	const day = String(date.getDate()).padStart(2, '0')
@@ -30,20 +27,7 @@ const getDate = (dateStr?: string): string => {
 	return `${day}.${month}.${year}`
 }
 
-function generateYearList(startYear: number = 1900): ISelectOption[] {
-	const currentYear = new Date().getFullYear()
-	const years: ISelectOption[] = []
-
-	for (let year = startYear; year <= currentYear; year++) {
-		years.push({value: year.toString(), label: year.toString()})
-	}
-
-	return years.reverse()
-}
-
-
 export {
-	generateYearList,
-	formatDate,
+	getDateWithHours,
 	getDate
 }

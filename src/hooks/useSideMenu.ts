@@ -1,15 +1,15 @@
+import {ROLES} from 'constants/roles'
+import {useAuth} from 'hooks'
 import {IMenuItem} from 'interfaces/configuration.interface'
-import {IRole} from 'interfaces/authentication.interface'
-import useAppContext from 'hooks/useAppContext'
-import {menu} from 'configurations/menu'
+import {menu} from 'constants/menu'
 import {useMemo} from 'react'
 
 
-const pickOnlyAllowedMenu = (menuItem: IMenuItem, role: IRole) => menuItem.allowedRoles?.includes(role)
-const sortMenu = (a: IMenuItem, b: IMenuItem, role: IRole) => a?.order?.[role] - b?.order?.[role]
+const pickOnlyAllowedMenu = (menuItem: IMenuItem, role: ROLES) => menuItem.allowedRoles?.includes(role)
+const sortMenu = (a: IMenuItem, b: IMenuItem, role: ROLES) => a?.order?.[role] - b?.order?.[role]
 
 export default function useSideMenu() {
-	const {user} = useAppContext()
+	const {user} = useAuth()
 
 	return useMemo(() => {
 			return user ?

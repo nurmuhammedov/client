@@ -1,5 +1,5 @@
 import {Logout, SelectIcon, Status} from 'assets/icons'
-import {useAppContext, useLogout} from 'hooks'
+import {useActions, useAuth} from 'hooks'
 import {useTranslation} from 'react-i18next'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
@@ -9,14 +9,13 @@ import {useState} from 'react'
 const Index = () => {
 	const {t} = useTranslation()
 	const [accountIsOpen, setAccountIsOpen] = useState(false)
-	const {user} = useAppContext()
-	const {handleLogout, isPending} = useLogout()
-
+	const {user, isLoading} = useAuth()
+	const {logout} = useActions()
 
 	return (
 		<div className={styles.root}>
 			<div className={styles['role-label']}>
-				{t(user?.roleLabel ?? 'Employee')}
+				{t(user?.role ?? 'User')}
 			</div>
 			<div className={styles['profile-container']}>
 				<div
@@ -32,8 +31,8 @@ const Index = () => {
 				</div>
 				<div className={classNames(styles.account, {[styles['active-account']]: accountIsOpen})}>
 					<div
-						className={classNames(styles.logout, {[styles.isLoading]: isPending})}
-						onClick={() => handleLogout()}
+						className={classNames(styles.logout, {[styles.isLoading]: isLoading})}
+						onClick={() => logout()}
 					>
 						<Logout/>
 						<span>{t('Logout')}</span>

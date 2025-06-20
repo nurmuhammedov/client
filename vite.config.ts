@@ -11,7 +11,6 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			'configurations': '/src/configurations',
 			'components': '/src/components',
 			'interfaces': '/src/interfaces',
 			'libraries': '/src/libraries',
@@ -19,7 +18,7 @@ export default defineConfig({
 			'constants': '/src/constants',
 			'services': '/src/services',
 			'contexts': '/src/contexts',
-			'helpers': '/src/helpers',
+			'schemas': '/src/schemas',
 			'modules': '/src/modules',
 			'assets': '/src/assets',
 			'styles': '/src/styles',

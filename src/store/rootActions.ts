@@ -1,9 +1,6 @@
-import {clearOrders, addOrder, deleteOrder, updateOrder} from './orders/orders.slice'
+import * as authActions from './auth/auth.action'
 
 
 export const allActions = {
-	clearOrders,
-	deleteOrder,
-	updateOrder,
-	addOrder
+	...authActions
 }

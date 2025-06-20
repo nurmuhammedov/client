@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next'
 import {showMessage} from 'utilities/alert'
 
 
-const usePaginatedData = <T>(
+const useDetail = <T>(
 	endpoint: string,
 	id?: string | number | boolean | null,
 	enabled: boolean = true,
@@ -35,4 +35,4 @@ const usePaginatedData = <T>(
 	}
 }
 
-export default usePaginatedData
+export default useDetail
