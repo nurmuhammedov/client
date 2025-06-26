@@ -1,7 +1,7 @@
 import {Plus} from 'assets/icons'
 import {
 	Button,
-	Card,
+	Card, DeleteButton, DeleteModal,
 	EditButton,
 	PageTitle,
 	Pagination,
@@ -59,6 +59,7 @@ const Index = () => {
 				accessor: (row) => (
 					<div className="flex items-start gap-lg">
 						<EditButton onClick={() => navigate(`edit/${row.id}`)}/>
+						<DeleteButton id={row?.id}/>
 					</div>
 				)
 			}
@@ -81,6 +82,7 @@ const Index = () => {
 				/>
 			</Card>
 			<Pagination totalPages={totalPages}/>
+			<DeleteModal endpoint="/"/>
 		</>
 	)
 }

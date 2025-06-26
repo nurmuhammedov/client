@@ -6,7 +6,6 @@ import {
 	Form,
 	Input,
 	Loader,
-	PageTitle,
 	Select
 } from 'components'
 import {BUTTON_THEME, FIELD} from 'constants/fields'
@@ -81,40 +80,37 @@ const Index: FC<IProperties> = ({edit = false}) => {
 
 	return (
 		<>
-			<PageTitle title={edit ? 'Edit' : 'Add user'}>
-				<div className="flex justify-center gap-lg align-center">
-					<Button onClick={() => navigate(-1)} theme={BUTTON_THEME.OUTLINE}>
-						Back
-					</Button>
-
-					<Button
-						type={FIELD.BUTTON}
-						theme={BUTTON_THEME.PRIMARY}
-						disabled={isAdding || isUpdating}
-						onClick={() => {
-							if (!edit) {
-								handleSubmit((data) =>
-									add(data)
-										.then(async () => {
-											reset()
-											navigate(-1)
-										})
-								)()
-							} else {
-								handleSubmit((data) =>
-									update(data)
-										.then(async () => {
-											reset()
-											navigate(-1)
-										})
-								)()
-							}
-						}}
-					>
-						{edit ? 'Edit' : 'Save'}
-					</Button>
-				</div>
-			</PageTitle>
+			<div className="flex justify-between gap-lg align-center" style={{marginBottom: '1rem'}}>
+				<Button onClick={() => navigate(-1)} theme={BUTTON_THEME.OUTLINE}>
+					Back
+				</Button>
+				<Button
+					type={FIELD.BUTTON}
+					theme={BUTTON_THEME.PRIMARY}
+					disabled={isAdding || isUpdating}
+					onClick={() => {
+						if (!edit) {
+							handleSubmit((data) =>
+								add(data)
+									.then(async () => {
+										reset()
+										navigate(-1)
+									})
+							)()
+						} else {
+							handleSubmit((data) =>
+								update(data)
+									.then(async () => {
+										reset()
+										navigate(-1)
+									})
+							)()
+						}
+					}}
+				>
+					{edit ? 'Edit' : 'Save'}
+				</Button>
+			</div>
 			<Card style={{padding: '1.5rem'}}>
 				<Form style={{flex: 0}} className="grid gap-xl" onSubmit={e => e.preventDefault()}>
 					<div className="span-4">
