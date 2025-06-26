@@ -20,22 +20,10 @@ const showMessage = (message: string = '', type: 'success' | 'error' | 'alert' =
 }
 
 
-const showErrorMessage = (error: AxiosError<{ [key: string]: string | string[] } | string | string[]>) => {
+const showErrorMessage = (error: AxiosError<Record<string, string> | string>) => {
 	const responseData = error?.response?.data
-
-	if (Array.isArray(responseData)) {
-		responseData.forEach((err) => showMessage(err, 'error', 10000))
-	} else if (typeof responseData === 'object' && responseData !== null) {
-		for (const key in responseData) {
-			if (Object.prototype.hasOwnProperty.call(responseData, key)) {
-				const value = responseData[key]
-				if (Array.isArray(value)) {
-					value.forEach((err) => showMessage(err, 'error', 10000))
-				} else {
-					showMessage(value, 'error', 10000)
-				}
-			}
-		}
+	if (typeof responseData === 'object' && 'message' in responseData && responseData?.message) {
+		showMessage(responseData?.message, 'error', 10000)
 	} else if (typeof responseData === 'string') {
 		showMessage(responseData, 'error', 10000)
 	} else {

@@ -85,7 +85,6 @@ textarea {
 }
 
 .icon {
-
   .input-wrapper {
     position: relative;
 
@@ -153,4 +152,15 @@ textarea {
       letter-spacing: 0.05625rem !important;
     }
   }
+}
+
+
+.disabled .children {
+  cursor: not-allowed !important;
+}
+
+.disabled input,
+.disabled textarea {
+  background: var(--silver-light) !important;
+  cursor: not-allowed !important;
 }

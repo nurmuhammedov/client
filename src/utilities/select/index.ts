@@ -2,7 +2,8 @@ import {
 	DropdownIndicatorProps,
 	CSSObjectWithLabel,
 	ControlProps,
-	OptionProps
+	OptionProps,
+	IndicatorsContainerProps
 } from 'react-select'
 
 
@@ -11,7 +12,7 @@ const getSelectStyles = (error?: boolean, top?: boolean) => ({
 		...base,
 		border: error ? '1px solid var(--red)' : state.isFocused ? '1px solid var(--primary-blue)' : '1px solid transparent',
 		boxShadow: error ? '0 0 0 1px var(--red)' : state.isFocused ? '0 0 0 1px var(--primary-blue)' : 'none',
-		backgroundColor: 'var(--gray-lightest)',
+		backgroundColor: state.isDisabled ? 'var(--silver-light)' : 'var(--gray-lightest)',
 		padding: '.75rem',
 		borderRadius: '0.625rem',
 		fontFamily: 'Poppins, Arial, Helvetica, sans-serif',
@@ -21,7 +22,6 @@ const getSelectStyles = (error?: boolean, top?: boolean) => ({
 		letterSpacing: '0.05625rem',
 		color: 'var(--navy-dark)',
 		width: '100%',
-		cursor: 'pointer',
 		outline: 'none',
 		transition: 'border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out',
 		'&:hover': {
@@ -92,6 +92,14 @@ const getSelectStyles = (error?: boolean, top?: boolean) => ({
 		lineHeight: '150%',
 		color: 'var(--navy-dark)',
 		cursor: 'not-allowed'
+	}),
+	'indicatorsContainer': (base: CSSObjectWithLabel, state: IndicatorsContainerProps) => ({
+		...base,
+		padding: 0,
+		display: state.isDisabled ? 'none' : 'flex',
+		'div': {
+			padding: '2px 8px'
+		}
 	})
 })
 

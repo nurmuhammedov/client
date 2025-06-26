@@ -3,11 +3,11 @@ import * as yup from 'yup'
 
 export const usersSchema = yup.object().shape({
 	fullName: yup.string().trim().required('This field is required'),
-	usernameUpdate: yup.boolean().nullable(),
+	usernameUpdate: yup.boolean().default(true).nullable(),
 	username: yup.string()
 		.trim()
 		.nullable()
-		.when('passwordUpdate', {
+		.when('usernameUpdate', {
 			is: false,
 			then: schema => schema.transform(() => null),
 			otherwise: schema => schema.required('This field is required')
@@ -19,7 +19,7 @@ export const usersSchema = yup.object().shape({
 				.matches(/^(?!_)[a-zA-Z0-9_]+(?<!_)$/, 'Login cannot begin or end with an underscore')
 				.matches(/^(?!.*_{2})/, 'It is not possible to type consecutive underscores in a login')
 		}),
-	roleUpdate: yup.boolean().nullable(),
+	roleUpdate: yup.boolean().default(true).nullable(),
 	role: yup.string()
 		.trim()
 		.nullable()
@@ -28,7 +28,7 @@ export const usersSchema = yup.object().shape({
 			then: schema => schema.transform(() => null),
 			otherwise: schema => schema.required('This field is required')
 		}),
-	passwordUpdate: yup.boolean().nullable(),
+	passwordUpdate: yup.boolean().default(true).nullable(),
 	password: yup.string()
 		.trim()
 		.nullable()

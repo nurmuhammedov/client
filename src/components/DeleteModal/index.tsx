@@ -10,11 +10,10 @@ interface IProperties {
 	onDelete?: () => void
 }
 
-const Index = ({title = 'Should it really be deleted?', endpoint, onDelete}: IProperties) => {
+const Index = ({title = 'Do you really want to delete this item?', endpoint, onDelete}: IProperties) => {
 	const {t} = useTranslation()
 	const {paramsObject, removeParams} = useSearchParams()
 	const {mutateAsync, isPending} = useDelete(endpoint, paramsObject['deleteId'])
-
 	const handleClose = () => {
 		removeParams('modal', 'deleteId', 'page', 'limit')
 	}

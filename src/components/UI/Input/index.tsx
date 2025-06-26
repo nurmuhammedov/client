@@ -35,6 +35,7 @@ const Index = forwardRef<HTMLInputElement | HTMLTextAreaElement, IField>(
 				[styles.error]: error || err,
 				[styles.icon]: icon,
 				[styles.mini]: mini,
+				[styles.disabled]: props?.disabled,
 				[styles.radius]: radius,
 				[styles.delete]: handleDelete
 			})}>
@@ -46,7 +47,7 @@ const Index = forwardRef<HTMLInputElement | HTMLTextAreaElement, IField>(
 					)
 				}
 				{
-					children ? children :
+					children ? <div className={styles.children}>{children}</div> :
 						textarea ? (
 							<textarea
 								rows={5}

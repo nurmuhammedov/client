@@ -16,7 +16,7 @@ import {FC, useEffect} from 'react'
 import {Controller, useForm} from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
 import {usersSchema} from 'schemas/users'
-import {getSelectValue} from 'utilities/common'
+import {cleanParams, getSelectValue} from 'utilities/common'
 import {enumToOptions} from 'utilities/select'
 
 
@@ -33,6 +33,7 @@ const Index: FC<IProperties> = ({edit = false}) => {
 		control,
 		register,
 		setValue,
+		clearErrors,
 		watch,
 		reset,
 		formState: {errors}
@@ -52,7 +53,7 @@ const Index: FC<IProperties> = ({edit = false}) => {
 	})
 
 	const {mutateAsync: add, isPending: isAdding} = useAdd('users')
-	const {mutateAsync: update, isPending: isUpdating} = useUpdate('users', id)
+	const {mutateAsync: update, isPending: isUpdating} = useUpdate('users/', id, 'patch')
 	const {
 		detail,
 		isPending: isDetailLoading
@@ -71,7 +72,7 @@ const Index: FC<IProperties> = ({edit = false}) => {
 				confirmPassword: ''
 			})
 		}
-	}, [detail, edit])
+	}, [detail, edit, reset])
 
 
 	if (isDetailLoading && edit) {
@@ -99,7 +100,7 @@ const Index: FC<IProperties> = ({edit = false}) => {
 							)()
 						} else {
 							handleSubmit((data) =>
-								update(data)
+								update(cleanParams(data))
 									.then(async () => {
 										reset()
 										navigate(-1)
@@ -113,7 +114,7 @@ const Index: FC<IProperties> = ({edit = false}) => {
 			</div>
 			<Card style={{padding: '1.5rem'}}>
 				<Form style={{flex: 0}} className="grid gap-xl" onSubmit={e => e.preventDefault()}>
-					<div className="span-4">
+					<div className={edit ? 'span-12' : 'span-4'}>
 						<Input
 							id="fullName"
 							type={FIELD.TEXT}
@@ -122,50 +123,66 @@ const Index: FC<IProperties> = ({edit = false}) => {
 							{...register('fullName')}
 						/>
 					</div>
-					<div className="span-4">
-						<Checkbox
-							id="usernameUpdate"
-							title="Username update"
-							{...register('usernameUpdate')}
-							onChange={e => {
-								register('usernameUpdate')?.onChange(e)
-								if (!e.target.checked) {
-									setValue('username', detail?.username)
-								}
-							}}
-						/>
-					</div>
-					<div className="span-4">
+
+					{edit && (
+						<>
+							<div className="span-12">
+								<Checkbox
+									id="usernameUpdate"
+									title="Update username?"
+									{...register('usernameUpdate')}
+									onChange={e => {
+										register('usernameUpdate')?.onChange(e)
+										if (!e.target.checked) {
+											setValue('username', detail?.username)
+											clearErrors('username')
+										}
+									}}
+								/>
+							</div>
+						</>
+					)}
+
+					<div className={edit ? 'span-12' : 'span-4'}>
 						<Input
 							id="username"
 							label="Login"
-							disabled={!watch('usernameUpdate')}
+							placeholder={!watch('usernameUpdate') ? ' ' : undefined}
+							disabled={edit && !watch('usernameUpdate')}
 							error={errors.username?.message}
 							{...register('username')}
 						/>
 					</div>
-					<div className="span-4">
-						<Checkbox
-							id="roleUpdate"
-							title="Role update"
-							{...register('roleUpdate')}
-							onChange={e => {
-								register('roleUpdate')?.onChange(e)
-								if (!e.target.checked) {
-									setValue('role', detail?.role)
-								}
-							}}
-						/>
-					</div>
-					<div className="span-4">
+
+					{edit && (
+						<>
+							<div className="span-12">
+								<Checkbox
+									id="roleUpdate"
+									title="Update role?"
+									{...register('roleUpdate')}
+									onChange={e => {
+										register('roleUpdate')?.onChange(e)
+										if (!e.target.checked) {
+											setValue('role', detail?.role)
+											clearErrors('role')
+										}
+									}}
+								/>
+							</div>
+						</>
+					)}
+
+					<div className={edit ? 'span-12' : 'span-4'}>
 						<Controller
 							name="role"
 							control={control}
 							render={({field}) => (
 								<Select
 									id="role"
+									placeholder={!watch('roleUpdate') ? ' ' : undefined}
 									options={enumToOptions(ROLES)}
-									isDisabled={!watch('roleUpdate')}
+									isDisabled={edit && !watch('roleUpdate')}
 									label="Role"
 									error={errors?.role?.message}
 									value={getSelectValue(enumToOptions(ROLES), field.value)}
@@ -174,35 +191,44 @@ const Index: FC<IProperties> = ({edit = false}) => {
 							)}
 						/>
 					</div>
-					<div className="span-4">
-						<Checkbox
-							id="passwordUpdate"
-							title="Password update"
-							{...register('passwordUpdate')}
-							onChange={e => {
-								register('passwordUpdate')?.onChange(e)
-								if (!e.target.checked) {
-									setValue('password', '')
-									setValue('confirmPassword', '')
-								}
-							}}
-						/>
-					</div>
-					<div className="span-4">
+
+					{edit && (
+						<>
+							<div className="span-12">
+								<Checkbox
+									id="passwordUpdate"
+									title="Update password?"
+									{...register('passwordUpdate')}
+									onChange={e => {
+										register('passwordUpdate')?.onChange(e)
+										if (!e.target.checked) {
+											setValue('password', '')
+											setValue('confirmPassword', '')
+											clearErrors(['password', 'confirmPassword'])
+										}
+									}}
+								/>
+							</div>
+						</>
+					)}
+
+					<div className={edit ? 'span-6' : 'span-4'}>
 						<Input
 							id="password"
 							label="Password"
 							type="password"
-							disabled={!watch('passwordUpdate')}
+							placeholder={!watch('passwordUpdate') ? ' ' : undefined}
+							disabled={edit && !watch('passwordUpdate')}
 							error={errors.password?.message}
 							{...register('password')}
 						/>
 					</div>
-					<div className="span-4">
+					<div className={edit ? 'span-6' : 'span-4'}>
 						<Input
 							id="confirmPassword"
 							label="Confirm password"
-							disabled={!watch('passwordUpdate')}
+							placeholder={!watch('passwordUpdate') ? ' ' : undefined}
+							disabled={edit && !watch('passwordUpdate')}
 							type="password"
 							error={errors.confirmPassword?.message}
 							{...register('confirmPassword')}

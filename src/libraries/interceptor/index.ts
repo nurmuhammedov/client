@@ -26,16 +26,12 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
 	response => response,
 	error => {
-		if (error?.response?.status <= 499 && error?.response?.status !== 401 && error?.response?.status !== 404) {
+		if (error?.response?.status === 401 && (error?.response?.config?.url === 'authentication/me')) {
+			showMessage('Invalid or missing authentication token', 'alert', 15000)
+		} else if (error?.response?.status <= 499) {
 			showErrorMessage(error)
 		} else if (error?.response?.status >= 500) {
 			showMessage('Internal server error', 'error', 15000)
-		} else if (error?.response?.status === 401 && (error?.response?.config?.url === 'accounts/me' || error?.response?.config?.url === 'accounts/login')) {
-			showMessage('Invalid or missing authentication token', 'alert', 15000)
-		} else if (error?.response?.status === 404 && error?.response?.config?.url === 'accounts/login') {
-			showMessage('Invalid username or password', 'error', 15000)
-		} else if (error?.response?.status === 404) {
-			showMessage('API not found', 'error', 15000)
 		}
 		return Promise.reject(error)
 	}

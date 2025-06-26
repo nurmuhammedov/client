@@ -1,7 +1,7 @@
-import {useMutation} from '@tanstack/react-query'
+import {useMutation, useQueryClient} from '@tanstack/react-query'
 import {CommonService} from 'services/common.service'
 import {showMessage} from 'utilities/alert'
-import {noopAsync} from 'utilities/common'
+import {noop, noopAsync} from 'utilities/common'
 
 
 const useDelete = (
@@ -10,6 +10,7 @@ const useDelete = (
 	successMessage: string = 'Deleted successfully',
 	errorMessage?: string
 ) => {
+	const queryClient = useQueryClient()
 	return useMutation({
 		mutationFn: () => {
 			if (id) {
@@ -19,7 +20,10 @@ const useDelete = (
 			}
 			return noopAsync()
 		},
-		onSuccess: () => showMessage(successMessage, 'success'),
+		onSuccess: () => {
+			showMessage(successMessage, 'success')
+			queryClient.invalidateQueries({queryKey: [endpoint?.slice(0, -1)]}).then(() => noop())
+		},
 		onError: () => {
 			if (errorMessage) {
 				showMessage(errorMessage, 'error')
