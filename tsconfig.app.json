@@ -24,23 +24,23 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": "./src",
     "paths": {
-      "@topcoder/*": ["*"],
       "@topcoder/app/*": ["app/*"],
       "@topcoder/components/*": ["shared/components/*"],
       "@topcoder/constants/*": ["shared/constants/*"],
+      "@topcoder/helpers/*": ["shared/helpers/*"],
+      "@topcoder/contexts/*": ["app/contexts/*"],
+      "@topcoder/assets/*": ["shared/assets/*"],
       "@topcoder/config/*": ["shared/config/*"],
       "@topcoder/types/*": ["shared/types/*"],
-      "@topcoder/lib/*": ["shared/lib/*"],
-      "@topcoder/hooks/*": ["shared/hooks/*"],
-      "@topcoder/assets/*": ["shared/assets/*"],
-      "@topcoder/api/*": ["shared/api/*"],
       "@topcoder/utils/*": ["shared/utils/*"],
-      "@topcoder/contexts/*": ["app/contexts/*"],
-      "@topcoder/modules/*": ["modules/*"],
-      "@topcoder/pages/*": ["pages/*"],
+      "@topcoder/hooks/*": ["shared/hooks/*"],
       "@topcoder/styles/*": ["app/styles/*"],
+      "@topcoder/modules/*": ["modules/*"],
       "@topcoder/store/*": ["app/store/*"],
-      "@topcoder/i18n/*": ["app/i18n/*"]
+      "@topcoder/api/*": ["shared/api/*"],
+      "@topcoder/i18n/*": ["app/i18n/*"],
+      "@topcoder/pages/*": ["pages/*"],
+      "@topcoder/*": ["*"]
     }
   },
   "include": ["src"]
