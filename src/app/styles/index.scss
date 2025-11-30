@@ -3,6 +3,4 @@
 @use 'base/reset';
 @use 'base/base';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
