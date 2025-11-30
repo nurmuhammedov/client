@@ -1,0 +1,8 @@
+@use 'base/variables';
+@use 'base/mixins';
+@use 'base/reset';
+@use 'base/base';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
