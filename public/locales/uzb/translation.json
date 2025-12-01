@@ -1,0 +1,22 @@
+{
+  "Oops! An error occurred. Please try again later": "Хатолик юз берди. Илтимос, кейинроқ яна уриниб кўринг",
+  "Internal server error": "Серверда номиълум хатолик юз берди!",
+  "uzb": "Ўзбекча",
+  "uz": "Ўзбекча",
+  "Admin": "Админ",
+  "Roles": "Роллар",
+  "Login": "Логин",
+  "Password": "Парол",
+  "Enter": "Кириш",
+  "Back": "Орқага",
+  "Login to the system": "Тизимга кириш",
+  "Enter your login": "Логинни киритинг",
+  "Enter your password": "Паролни киритинг",
+  "Login must be at least 5 characters long": "Логин камида 5 та белгидан иборат бўлиши лозим",
+  "Login must not exceed 30 characters": "Логин 30 та белгидан ошмаслиги лозим",
+  "Password must be at least 8 characters long": "Парол камида 8 та белгидан иборат бўлиши лозим",
+  "Password must not exceed 30 characters": "Парол 30 та белгидан ошмаслиги лозим",
+  "Successful": "Муваффақиятли",
+  "Home": "Асосий",
+  "Logout": "Чиқиш"
+}
