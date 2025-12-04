@@ -1,0 +1,35 @@
+/* HTML */
+html {
+  box-sizing: border-box;
+}
+
+/* Lists */
+ul,
+ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scrollbar */
+*::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0.3rem;
+  height: 0.3rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 0.8rem;
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
+/*# sourceMappingURL=global.css.map */

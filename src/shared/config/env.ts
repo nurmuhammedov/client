@@ -1,4 +1,4 @@
 export const BASE_URL: string =
-  import.meta.env.BASE_URL || 'https://api.example.com'
+  import.meta.env.VITE_BASE_URL || 'https://api.example.com'
 
-export const DEV: boolean = import.meta.env.DEV || false
+export const IS_DEV: boolean = import.meta.env.VITE_IS_DEV || false
