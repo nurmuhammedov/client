@@ -1,9 +1,6 @@
 {
   "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
@@ -22,8 +19,8 @@
       "@topcoder/api/*": ["shared/api/*"],
       "@topcoder/i18n/*": ["app/i18n/*"],
       "@topcoder/pages/*": ["pages/*"],
-      "@topcoder/app/*": ["app/*"],
-      "@topcoder/*": ["*"]
+      "@topcoder/app/*": ["app/*"]
+      //"@topcoder/*": ["*"]
     }
   }
 }

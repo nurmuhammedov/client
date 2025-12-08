@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { RefreshCw, AlertTriangle } from 'lucide-react'
+import { AlertTriangle, RefreshCw } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { ErrorAction, ErrorFallbackProps } from '../types'
 import { Button } from '@topcoder/components'
@@ -12,7 +12,7 @@ export const ErrorFallback = memo(({ reloadPage }: ErrorFallbackProps) => {
       label: t('Reload page'),
       icon: RefreshCw,
       action: reloadPage,
-      variant: 'secondary',
+      variant: 'default',
     },
   ]
 
@@ -20,9 +20,7 @@ export const ErrorFallback = memo(({ reloadPage }: ErrorFallbackProps) => {
     <div className="bg-background text-foreground flex min-h-screen w-full flex-col items-center justify-center p-6">
       <div className="w-full max-w-2xl text-center">
         <div className="mb-8 flex justify-center">
-          <div className="bg-destructive/10 relative flex h-24 w-24 items-center justify-center rounded-full">
-            <AlertTriangle className="text-destructive h-24 w-24" />
-          </div>
+          <AlertTriangle className="text-destructive h-24 w-24" />
         </div>
         <h2 className="text-foreground font-golos-text mb-8 text-3xl font-bold tracking-tight">
           {t('An unexpected error occurred')}

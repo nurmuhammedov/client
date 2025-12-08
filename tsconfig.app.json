@@ -53,8 +53,8 @@
       "@topcoder/i18n": ["app/i18n"],
       "@topcoder/pages": ["pages"],
       "@topcoder/app/*": ["app/*"],
-      "@topcoder/app": ["app"],
-      "@topcoder/*": ["*"]
+      "@topcoder/app": ["app"]
+      //"@topcoder/*": ["*"]
     }
   },
   "include": ["src"]

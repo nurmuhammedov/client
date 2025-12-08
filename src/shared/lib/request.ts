@@ -1,6 +1,4 @@
-export const removeEmptyParams = (
-  params: Record<string, string | null | undefined>
-) => {
+export const removeEmptyParams = (params: Record<string, string | null | undefined>) => {
   const newParams: Record<string, string | null | undefined> = {}
 
   Object.keys(params).forEach((key) => {

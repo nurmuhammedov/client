@@ -28,11 +28,5 @@ export interface ErrorAction {
   label: string
   icon: LucideIcon
   action: () => void
-  variant:
-    | 'default'
-    | 'destructive'
-    | 'outline'
-    | 'secondary'
-    | 'ghost'
-    | 'link'
+  variant: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
 }

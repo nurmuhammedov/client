@@ -1,5 +1,11 @@
+import { Button } from '@topcoder/components'
+
 function App() {
-  return <h1>App</h1>
+  return (
+    <div>
+      <Button variant="default">Ўзгартириш киритиш</Button>
+    </div>
+  )
 }
 
 export default App
