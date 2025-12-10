@@ -1,28 +1,58 @@
-import { CommonService } from '@/shared/api/dictionaries/queries/comon.api'
-import { useMutation } from '@tanstack/react-query'
-import { toast } from 'sonner'
+import { Query, useMutation, useQueryClient } from '@tanstack/react-query'
+import { showMessage } from '@topcoder/lib'
+import { useTranslation } from 'react-i18next'
+import { CommonService } from '@topcoder/api'
 
-const useUpdate = <TVariables extends object, TData, TError>(
+export const useUpdate = <TResponse, TPayload>(
   endpoint: string,
-  id?: string | number | boolean | null,
+  invalidateQueryKey: string | string[] = [],
   method: 'put' | 'patch' = 'put',
-  successMessage: string = 'Updated successfully'
+  successMessage?: string
 ) => {
-  return useMutation<TData, TError, TVariables>({
-    mutationFn: async (data: TVariables) => {
-      if (!id && id !== 0) {
-        toast.error(
-          `The operation cannot be completed because a valid ID was not provided. Please ensure you pass a valid ID when updating data at endpoint: ${endpoint}`
-        )
+  const { t } = useTranslation(['messages', 'errors'])
+  const queryClient = useQueryClient()
+
+  type InternalVariables = {
+    payload: TPayload
+    id: string | number | undefined | null
+  }
+
+  const mutation = useMutation<TResponse, Error, InternalVariables>({
+    mutationFn: ({ payload, id }) => {
+      if (!id) {
+        showMessage(t('ID is required to perform update operation', { ns: 'errors' }), 'error')
         return Promise.reject()
+      } else {
+        return method === 'put'
+          ? CommonService.updateData<TPayload, TResponse>(endpoint, payload, id)
+          : CommonService.partialUpdateData<TPayload, TResponse>(endpoint, payload, id)
+      }
+    },
+    onSuccess: () => {
+      const queryKeys = Array.isArray(invalidateQueryKey) ? invalidateQueryKey : [invalidateQueryKey]
+
+      if (successMessage) {
+        showMessage(successMessage)
       }
 
-      return method === 'put'
-        ? CommonService.updateData<TVariables, TData>(endpoint, data, id.toString())
-        : CommonService.partialUpdateData<TVariables, TData>(endpoint, data, id.toString())
+      if (queryKeys?.length > 0) {
+        queryClient
+          .invalidateQueries({
+            predicate: (query: Query) => {
+              const queryKey = query.queryKey[0]
+              return typeof queryKey === 'string' && queryKeys.includes(queryKey)
+            },
+          })
+          .catch(() => {
+            showMessage(t('An unexpected error occurred while refreshing the data', { ns: 'errors' }), 'error')
+          })
+      }
     },
-    onSuccess: () => toast.success(successMessage),
   })
-}
 
-export default useUpdate
+  return {
+    ...mutation,
+    mutate: (payload: TPayload, id: string | number | undefined | null) => mutation.mutate({ payload, id }),
+    mutateAsync: (payload: TPayload, id: string | number | undefined | null) => mutation.mutateAsync({ payload, id }),
+  }
+}

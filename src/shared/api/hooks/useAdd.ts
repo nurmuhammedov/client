@@ -1,21 +1,37 @@
-import { CommonService } from '@/shared/api/dictionaries/queries/comon.api'
-import { useMutation } from '@tanstack/react-query'
-import { toast } from 'sonner'
+import { Query, useMutation, useQueryClient } from '@tanstack/react-query'
+import { showMessage } from '@topcoder/lib'
+import { useTranslation } from 'react-i18next'
+import { CommonService } from '@topcoder/api'
 
-const useAdd = <TVariables extends object, TData, TError>(
+export const useAdd = <TResponse, TPayload>(
   endpoint: string,
-  successMessage: string = 'Muvaffaqiyatli saqlandi!'
+  invalidateQueryKey: string | string[] = [],
+  successMessage?: string
 ) => {
-  return useMutation<TData, TError, TVariables>({
-    mutationFn: (data: TVariables) => CommonService.addData<TVariables, TData>(endpoint, data),
-    onSuccess: () => () => {
+  const { t } = useTranslation(['messages', 'errors'])
+  const queryClient = useQueryClient()
+
+  return useMutation<TResponse, Error, TPayload>({
+    mutationFn: (payload) => CommonService.addData<TPayload, TResponse>(endpoint, payload),
+    onSuccess: () => {
+      const invalidateQueryKeys = Array.isArray(invalidateQueryKey) ? invalidateQueryKey : [invalidateQueryKey]
+
       if (successMessage) {
-        toast.success(successMessage, {
-          richColors: true,
-        })
+        showMessage(successMessage)
+      }
+
+      if (invalidateQueryKeys?.length > 0) {
+        queryClient
+          .invalidateQueries({
+            predicate: (query: Query) => {
+              const queryKey = query.queryKey[0]
+              return typeof queryKey === 'string' && invalidateQueryKeys.includes(queryKey)
+            },
+          })
+          .catch(() => {
+            showMessage(t('An unexpected error occurred while refreshing the data', { ns: 'errors' }), 'error')
+          })
       }
     },
   })
 }
-
-export default useAdd

@@ -1,4 +1,7 @@
 {
   "An unexpected error occurred": "Ko‘zda tutilmagan xatolik yuz berdi!",
-  "Reload page": "Sahifani qayta yuklash"
+  "Reload page": "Sahifani qayta yuklash",
+  "ID is required to perform delete operation": "O‘chirish uchun ID ko‘rsatilishi shart!",
+  "ID is required to perform update operation": "Tahrirlash uchun ID ko‘rsatilishi shart!",
+  "An unexpected error occurred while refreshing the data": "Maʼlumotlarni yangilash vaqtida kutilmagan xatolik yuz berdi!"
 }

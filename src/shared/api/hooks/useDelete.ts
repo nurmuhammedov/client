@@ -1,19 +1,44 @@
-import { CommonService } from '@/shared/api/dictionaries/queries/comon.api'
-import { useMutation } from '@tanstack/react-query'
-import { toast } from 'sonner'
+import { Query, useMutation, useQueryClient } from '@tanstack/react-query'
+import { CommonService } from '@topcoder/api'
+import { showMessage } from '@topcoder/lib'
+import { useTranslation } from 'react-i18next'
 
-const useDelete = (endpoint: string, id?: string | number | null, successMessage?: string) => {
-  return useMutation({
-    mutationFn: (ID?: number) => {
-      if (id || ID) {
-        return CommonService.deleteData(endpoint, id?.toString() || ID?.toString() || '')
+export const useDelete = <TResponse>(
+  endpoint: string,
+  invalidateQueryKey: string | string[] = [],
+  successMessage?: string
+) => {
+  const { t } = useTranslation(['messages', 'errors'])
+  const queryClient = useQueryClient()
+
+  return useMutation<TResponse, Error, string | number | undefined | null>({
+    mutationFn: (id) => {
+      if (id) {
+        return CommonService.deleteData<TResponse>(endpoint, id)
       } else {
-        toast.error('ID is required to perform delete operation')
+        showMessage(t('ID is required to perform delete operation', { ns: 'errors' }), 'error')
         return Promise.reject()
       }
     },
-    onSuccess: () => toast.success(successMessage),
+    onSuccess: () => {
+      const invalidateQueryKeysOnDelete = Array.isArray(invalidateQueryKey) ? invalidateQueryKey : [invalidateQueryKey]
+
+      if (invalidateQueryKeysOnDelete.length > 0) {
+        queryClient
+          .invalidateQueries({
+            predicate: (query: Query) => {
+              const queryKey = query.queryKey[0]
+              return typeof queryKey === 'string' && invalidateQueryKeysOnDelete.includes(queryKey)
+            },
+          })
+          .catch(() => {
+            showMessage(t('An unexpected error occurred while refreshing the data', { ns: 'errors' }), 'error')
+          })
+      }
+
+      if (successMessage) {
+        showMessage(successMessage)
+      }
+    },
   })
 }
-
-export default useDelete

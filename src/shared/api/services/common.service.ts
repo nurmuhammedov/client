@@ -11,17 +11,17 @@ export const CommonService = {
     return response.data
   },
 
-  async addData<TResponse, TPayload>(endpoint: string, payload: TPayload) {
+  async addData<TPayload, TResponse>(endpoint: string, payload: TPayload) {
     const res = await apiClient.post<TResponse>(endpoint, payload)
     return res.data
   },
 
-  async updateData<TResponse, TPayload>(endpoint: string, payload: TPayload, id: string | number | undefined | null) {
+  async updateData<TPayload, TResponse>(endpoint: string, payload: TPayload, id: string | number | undefined | null) {
     const res = await apiClient.put<TResponse>(endpoint + id, payload)
     return res.data
   },
 
-  async partialUpdateData<TResponse, TPayload>(
+  async partialUpdateData<TPayload, TResponse>(
     endpoint: string,
     payload: TPayload,
     id: string | number | undefined | null

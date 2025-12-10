@@ -1,4 +1,5 @@
 import { ILoginForm, ILoginResponse } from '@topcoder/types'
+import { apiClient } from '@topcoder/api'
 
 export const AuthenticationService = {
   async login(credentials: ILoginForm) {

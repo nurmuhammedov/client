@@ -1,6 +1,8 @@
-export { default as usePaginatedData } from './usePaginatedData'
-export { default as useDetail } from './useDetail'
-export { default as useUpdate } from './useUpdate'
-export { default as useDelete } from './useDelete'
-export { default as useData } from './useData'
-export { default as useAdd } from './useAdd'
+import { usePaginatedData } from './usePaginatedData'
+import { useDelete } from './useDelete'
+import { useDetail } from './useDetail'
+import { useUpdate } from './useUpdate'
+import { useData } from './useData'
+import { useAdd } from './useAdd'
+
+export { usePaginatedData, useDelete, useDetail, useUpdate, useData, useAdd }

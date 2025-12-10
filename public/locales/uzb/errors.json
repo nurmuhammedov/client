@@ -1,4 +1,7 @@
 {
   "An unexpected error occurred": "Кўзда тутилмаган хатолик юз берди!",
-  "Reload page": "Саҳифани қайта юклаш"
+  "Reload page": "Саҳифани қайта юклаш",
+  "ID is required to perform delete operation": "Ўчириш учун ID кўрсатилиши шарт!",
+  "ID is required to perform update operation": "Таҳрирлаш учун ID кўрсатилиши шарт!",
+  "An unexpected error occurred while refreshing the data": "Маълумотларни янгилаш вақтида кутилмаган хатолик юз берди!"
 }
