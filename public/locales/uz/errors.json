@@ -1,7 +1,13 @@
 {
+  "Oops! An error occurred. Please try again later": "Xatolik yuz berdi. Iltimos, keyinroq yana urinib ko‘ring",
+  "Internal server error": "Serverda nomaʼlum xatolik yuz berdi!",
   "An unexpected error occurred": "Ko‘zda tutilmagan xatolik yuz berdi!",
   "Reload page": "Sahifani qayta yuklash",
   "ID is required to perform delete operation": "O‘chirish uchun ID ko‘rsatilishi shart!",
   "ID is required to perform update operation": "Tahrirlash uchun ID ko‘rsatilishi shart!",
-  "An unexpected error occurred while refreshing the data": "Maʼlumotlarni yangilash vaqtida kutilmagan xatolik yuz berdi!"
+  "An unexpected error occurred while refreshing the data": "Maʼlumotlarni yangilash vaqtida kutilmagan xatolik yuz berdi!",
+  "Login must be at least 5 characters long": "Login kamida 5 ta belgidan iborat bo‘lishi lozim",
+  "Login must not exceed 30 characters": "Login 30 ta belgidan oshmasligi lozim",
+  "Password must be at least 8 characters long": "Parol kamida 8 ta belgidan iborat bo‘lishi lozim",
+  "Password must not exceed 30 characters": "Parol 30 ta belgidan oshmasligi lozim"
 }

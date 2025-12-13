@@ -1,5 +1,5 @@
-import { createContext, Dispatch, PropsWithChildren, SetStateAction, useState } from 'react'
 import { getLocalStorage } from '@topcoder/lib'
+import { createContext, Dispatch, PropsWithChildren, SetStateAction, useState } from 'react'
 
 interface IAppContext {
   isSideBarOpen: boolean | null

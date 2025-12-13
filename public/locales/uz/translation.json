@@ -1,22 +1,15 @@
 {
-  "Oops! An error occurred. Please try again later": "Xatolik yuz berdi. Iltimos, keyinroq yana urinib ko‘ring",
-  "Internal server error": "Serverda nomaʼlum xatolik yuz berdi!",
   "uzb": "Ўзбекча",
   "uz": "O‘zbekcha",
   "Admin": "Admin",
   "Roles": "Rollar",
   "Login": "Login",
   "Password": "Parol",
-  "Enter": "Kirish",
   "Back": "Orqaga",
   "Login to the system": "Tizimga kirish",
-  "Enter your login": "Loginni kiriting",
-  "Enter your password": "Parolni kiriting",
-  "Login must be at least 5 characters long": "Login kamida 5 ta belgidan iborat bo‘lishi lozim",
-  "Login must not exceed 30 characters": "Login 30 ta belgidan oshmasligi lozim",
-  "Password must be at least 8 characters long": "Parol kamida 8 ta belgidan iborat bo‘lishi lozim",
-  "Password must not exceed 30 characters": "Parol 30 ta belgidan oshmasligi lozim",
-  "Successful": "Muvaffaqiyatli",
+  "Enter login": "Loginni kiriting",
+  "Enter password": "Parolni kiriting",
   "Home": "Asosiy",
-  "Logout": "Chiqish"
+  "Logout": "Chiqish",
+  "Close": "Yopish"
 }

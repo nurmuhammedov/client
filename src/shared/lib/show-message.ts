@@ -6,7 +6,7 @@ export const showMessage = (
   message: string,
   type: ToastType = 'success',
   duration: number = 5000,
-  position: 'top-right' | 'top-center' | 'bottom-right' | 'bottom-center' = 'top-center'
+  position: 'top-right' | 'top-center' | 'bottom-right' | 'bottom-center' = 'top-right'
 ) => {
   const options = {
     duration,

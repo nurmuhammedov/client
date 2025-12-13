@@ -1,6 +1,6 @@
-import axios from 'axios'
 import { BASE_URL } from '@topcoder/config'
 import { removeEmptyParams } from '@topcoder/lib'
+import axios from 'axios'
 
 export const apiClient = axios.create({
   baseURL: BASE_URL,

@@ -1,6 +1,6 @@
 import { apiClient } from '@topcoder/api'
-import { AxiosResponse } from 'axios'
 import { IListResponse, IQueryParams } from '@topcoder/types'
+import { AxiosResponse } from 'axios'
 
 export const CommonService = {
   getPaginatedData: async <TResponse>(

@@ -1,20 +1,18 @@
+import '@topcoder/i18n'
+import '@topcoder/styles/global.css'
+
+import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ErrorBoundary, Toaster } from '@topcoder/components'
-import { QueryClientProvider } from '@tanstack/react-query'
-import { NuqsAdapter } from 'nuqs/adapters/react-router/v7'
 import { AppContextProvider } from '@topcoder/contexts'
+import { App } from '@topcoder/pages'
 import { queryClient } from '@topcoder/providers'
-import { BrowserRouter } from 'react-router-dom'
-import { createRoot } from 'react-dom/client'
 import { store } from '@topcoder/store'
-import { Provider } from 'react-redux'
+import { NuqsAdapter } from 'nuqs/adapters/react-router/v7'
 import { StrictMode } from 'react'
-import App from '@topcoder/pages'
-import '@topcoder/i18n'
-
-// Styles
-// import '@topcoder/styles/typography.css'
-import '@topcoder/styles/global.css'
+import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -30,7 +28,7 @@ createRoot(document.getElementById('root')!).render(
             </ErrorBoundary>
           </NuqsAdapter>
         </BrowserRouter>
-        <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </Provider>
   </StrictMode>

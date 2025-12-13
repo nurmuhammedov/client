@@ -1,6 +1,6 @@
+import React, { ReactPortal } from 'react'
 import { createPortal } from 'react-dom'
 import { Toaster } from 'sonner'
-import React, { ReactPortal } from 'react'
 
 const Alert: React.FC = (): ReactPortal =>
   createPortal(

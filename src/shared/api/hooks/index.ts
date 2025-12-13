@@ -1,8 +1,8 @@
-import { usePaginatedData } from './usePaginatedData'
+import { useAdd } from './useAdd'
+import { useData } from './useData'
 import { useDelete } from './useDelete'
 import { useDetail } from './useDetail'
+import { usePaginatedData } from './usePaginatedData'
 import { useUpdate } from './useUpdate'
-import { useData } from './useData'
-import { useAdd } from './useAdd'
 
-export { usePaginatedData, useDelete, useDetail, useUpdate, useData, useAdd }
+export { useAdd, useData, useDelete, useDetail, usePaginatedData, useUpdate }

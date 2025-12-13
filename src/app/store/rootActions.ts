@@ -10,4 +10,4 @@ export const allActions = {
 }
 
 export * from '@topcoder/store/authentication/authentication.action'
-export { addDemo, deleteDemo, updateDemo, clearDemos }
+export { addDemo, clearDemos, deleteDemo, updateDemo }

@@ -1,5 +1,5 @@
-import { ComponentType, ReactNode, ErrorInfo } from 'react'
 import { LucideIcon } from 'lucide-react'
+import { ComponentType, ErrorInfo, ReactNode } from 'react'
 
 export interface ErrorBoundaryState {
   hasError: boolean

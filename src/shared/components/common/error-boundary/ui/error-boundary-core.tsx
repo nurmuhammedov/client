@@ -1,8 +1,9 @@
+import { ErrorBoundaryProps, ErrorBoundaryState, ErrorFallbackProps } from '@topcoder/components'
+import { IS_DEV } from '@topcoder/config'
 import { Component, ErrorInfo, ReactNode } from 'react'
 import { NavigateFunction } from 'react-router-dom'
+
 import { ErrorFallback } from './error-fallback'
-import { IS_DEV } from '@topcoder/config'
-import { ErrorBoundaryProps, ErrorBoundaryState, ErrorFallbackProps } from '@topcoder/components'
 
 interface Props extends ErrorBoundaryProps {
   navigate: NavigateFunction

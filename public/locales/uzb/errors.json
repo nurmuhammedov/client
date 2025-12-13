@@ -1,7 +1,13 @@
 {
+  "Oops! An error occurred. Please try again later": "Хатолик юз берди. Илтимос, кейинроқ яна уриниб кўринг",
+  "Internal server error": "Серверда номиълум хатолик юз берди!",
   "An unexpected error occurred": "Кўзда тутилмаган хатолик юз берди!",
   "Reload page": "Саҳифани қайта юклаш",
   "ID is required to perform delete operation": "Ўчириш учун ID кўрсатилиши шарт!",
   "ID is required to perform update operation": "Таҳрирлаш учун ID кўрсатилиши шарт!",
-  "An unexpected error occurred while refreshing the data": "Маълумотларни янгилаш вақтида кутилмаган хатолик юз берди!"
+  "An unexpected error occurred while refreshing the data": "Маълумотларни янгилаш вақтида кутилмаган хатолик юз берди!",
+  "Login must be at least 5 characters long": "Логин камида 5 та белгидан иборат бўлиши лозим",
+  "Login must not exceed 30 characters": "Логин 30 та белгидан ошмаслиги лозим",
+  "Password must be at least 8 characters long": "Парол камида 8 та белгидан иборат бўлиши лозим",
+  "Password must not exceed 30 characters": "Парол 30 та белгидан ошмаслиги лозим"
 }

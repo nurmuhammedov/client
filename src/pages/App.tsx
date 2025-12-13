@@ -1,11 +1,10 @@
-import { Button } from '@topcoder/components'
+import { Button, Input } from '@topcoder/components'
 
-function App() {
+export function App() {
   return (
-    <div>
+    <div className="p-4">
       <Button variant="default">Ўзгартириш киритиш</Button>
+      <Input className="" placeholder="Username" />
     </div>
   )
 }
-
-export default App
