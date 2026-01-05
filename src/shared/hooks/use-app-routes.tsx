@@ -270,7 +270,7 @@ export const useAppRoutes = () => {
         children: [
           {
             index: true,
-            element: <Navigate to={`/auth/${IS_DEV ? 'admin' : ' login'}`} replace />,
+            element: <Navigate to={`/auth/${IS_DEV ? 'admin' : 'login'}`} replace />,
           },
           {
             path: 'login',
@@ -284,7 +284,7 @@ export const useAppRoutes = () => {
       },
       {
         path: '*',
-        element: <Navigate to={`/auth/${IS_DEV ? 'admin' : ' login'}`} replace />,
+        element: <Navigate to={`/auth/${IS_DEV ? 'admin' : 'login'}`} replace />,
       },
     ],
   }
