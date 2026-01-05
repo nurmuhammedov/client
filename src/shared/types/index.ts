@@ -1,3 +1,2 @@
-export * from './authentication.types'
+export * from './auth.types'
 export * from './common.types'
-export * from './form.types'

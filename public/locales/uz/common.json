@@ -1,0 +1,23 @@
+{
+  "committee_name": "Sanoat, radiatsiya va yadro xavfsizligi qo‘mitasi",
+  "error_processing_request": "So‘rovni qayta ishlash jarayonida xatolik yuz berdi. Iltimos, birozdan so‘ng, qayta urinib ko‘ring.",
+  "data_is_loading": "Ma’lumotlar yuklanmoqda...",
+  "successfully!": "Muvaffaqiyatli!",
+  "uzb": "Ўзбекча",
+  "uz": "O‘zbekcha",
+  "admin": "Admin",
+  "roles": "Rollar",
+  "close": "Yopish",
+  "logout": "Chiqish",
+  "total_elements": "Jami {{count}} ta ma’lumot",
+  "user_role": {
+    "INDIVIDUAL": "Jismoniy shaxs",
+    "LEGAL": "Yuridik shaxs",
+    "INSPECTOR": "Inspektor",
+    "REGIONAL": "Hududiy bo‘lim boshlig‘i",
+    "MANAGER": "Maʼsul xodim",
+    "HEAD": "Maʼsul bo‘lim boshlig‘i",
+    "CHAIRMAN": "Rais",
+    "ADMIN": "Maʼmur"
+  }
+}

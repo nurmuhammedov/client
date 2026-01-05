@@ -13,6 +13,7 @@ import {
   FormProvider,
   useFormContext,
 } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 const Form = FormProvider
 
@@ -77,7 +78,7 @@ const FormItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 
     return (
       <FormItemContext.Provider value={{ id }}>
-        <div ref={ref} className={cn('space-y-2', className)} {...props} />
+        <div ref={ref} className={cn('flex w-full flex-col gap-1', className)} {...props} />
       </FormItemContext.Provider>
     )
   }
@@ -124,6 +125,7 @@ FormDescription.displayName = 'FormDescription'
 
 const FormMessage = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
   ({ className, children, ...props }, ref) => {
+    const { t } = useTranslation('errors')
     const { error, formMessageId } = useFormField()
     const body = error ? String(error?.message ?? '') : children
 
@@ -138,7 +140,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<
         className={cn('text-[0.8rem] font-medium text-destructive', className)}
         {...props}
       >
-        {body}
+        {typeof body === 'string' ? t(body) : body}
       </p>
     )
   }

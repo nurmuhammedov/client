@@ -6,6 +6,7 @@ export const store = configureStore({
   devTools: false,
 })
 
+export type AppDispatch = typeof store.dispatch
 export type TypeRootState = ReturnType<typeof store.getState>
 export * from './rootActions'
 export * from './rootReducer'

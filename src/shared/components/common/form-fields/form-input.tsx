@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Control, FieldValues, Path } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-interface FormInputProps<T extends FieldValues> extends Omit<React.ComponentProps<typeof Input>, 'name'> {
+interface FormInputProps<T extends FieldValues> extends Omit<React.ComponentProps<typeof Input>, 'name' | 'className'> {
   control: Control<T>
   name: Path<T>
   label?: string
@@ -12,7 +12,8 @@ interface FormInputProps<T extends FieldValues> extends Omit<React.ComponentProp
   iconPosition?: 'left' | 'right'
   showError?: boolean
   required?: boolean
-  rootClassName?: string
+  className?: string
+  inputClassName?: string
 }
 
 export function FormInput<T extends FieldValues>({
@@ -24,18 +25,18 @@ export function FormInput<T extends FieldValues>({
   showError = true,
   required,
   className,
-  rootClassName,
-  placeholder = 'Enter',
+  inputClassName,
+  placeholder = 'enter',
   ...props
 }: FormInputProps<T>) {
-  const { t } = useTranslation(['translation', 'form'])
+  const { t } = useTranslation(['labels', 'form'])
 
   return (
     <FormField
       control={control}
       name={name}
       render={({ field, fieldState: { error } }) => (
-        <FormItem className={rootClassName}>
+        <FormItem className={className}>
           {label && (
             <FormLabel>
               {t(label)}
@@ -54,7 +55,7 @@ export function FormInput<T extends FieldValues>({
                   icon && iconPosition === 'left' && 'pl-10',
                   icon && iconPosition === 'right' && 'pr-10',
                   error && 'border-destructive focus-visible:ring-destructive',
-                  className
+                  inputClassName
                 )}
                 {...field}
                 {...props}

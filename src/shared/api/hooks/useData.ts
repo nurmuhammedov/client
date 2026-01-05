@@ -12,7 +12,7 @@ export const useData = <TResponse>(
   staleTime?: number
 ) => {
   const { i18n } = useTranslation()
-  const { user } = useTypedSelector((state) => state.authentication)
+  const { user } = useTypedSelector((state) => state.auth)
   const queryKeys = Array.isArray(queryKey) ? queryKey : [queryKey]
 
   return useQuery<TResponse, Error>({

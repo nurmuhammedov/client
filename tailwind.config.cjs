@@ -4,10 +4,12 @@ module.exports = {
   content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
   theme: {
     extend: {
+      maxWidth: {
+        '8xl': '120rem',
+      },
       fontFamily: {
-        sans: ['Golos Text', 'Montserrat', 'system-ui', 'sans-serif'],
+        sans: ['Golos Text', 'system-parts', 'sans-serif'],
         golos: ['Golos Text', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -15,8 +17,11 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        // white: 'hsl(var(--white))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        teal: 'hsl(var(--teal))',
+        'teal-foreground': 'hsl(var(--teal-foreground))',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',

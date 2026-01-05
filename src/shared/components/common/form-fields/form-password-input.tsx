@@ -5,28 +5,32 @@ import React, { useState } from 'react'
 import { Control, FieldValues, Path } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-interface FormPasswordInputProps<T extends FieldValues> extends Omit<React.ComponentProps<typeof Input>, 'name'> {
+interface FormPasswordInputProps<T extends FieldValues> extends Omit<
+  React.ComponentProps<typeof Input>,
+  'name' | 'className'
+> {
   control: Control<T>
   name: Path<T>
   label?: string
   placeholder?: string
   showError?: boolean
   required?: boolean
-  rootClassName?: string
+  className?: string
+  inputClassName?: string
 }
 
 export function FormPasswordInput<T extends FieldValues>({
   control,
   name,
   label,
-  placeholder = 'Enter password',
+  placeholder = 'enter',
   showError = true,
   required,
   className,
-  rootClassName,
+  inputClassName,
   ...props
 }: FormPasswordInputProps<T>) {
-  const { t } = useTranslation(['translation', 'form'])
+  const { t } = useTranslation(['labels', 'form'])
   const [showPassword, setShowPassword] = useState(false)
 
   return (
@@ -34,7 +38,7 @@ export function FormPasswordInput<T extends FieldValues>({
       control={control}
       name={name}
       render={({ field, fieldState: { error } }) => (
-        <FormItem className={rootClassName}>
+        <FormItem className={className}>
           {label && (
             <FormLabel>
               {t(label)}
@@ -45,8 +49,8 @@ export function FormPasswordInput<T extends FieldValues>({
             <div className="relative">
               <Input
                 type={showPassword ? 'text' : 'password'}
-                placeholder={t(placeholder)}
-                className={cn('pr-10', error && 'border-destructive focus-visible:ring-destructive', className)}
+                placeholder={t(placeholder, { ns: 'form' })}
+                className={cn('pr-10', error && 'border-destructive focus-visible:ring-destructive', inputClassName)}
                 {...field}
                 {...props}
               />
@@ -62,7 +66,7 @@ export function FormPasswordInput<T extends FieldValues>({
                 ) : (
                   <Eye className="h-4 w-4" aria-hidden="true" />
                 )}
-                <span className="sr-only">{t(showPassword ? 'Show password' : 'Hide password', { ns: 'form' })}</span>
+                <span className="sr-only">{t(showPassword ? 'show_password' : 'hide_password', { ns: 'form' })}</span>
               </button>
             </div>
           </FormControl>

@@ -29,7 +29,7 @@ export const useAdd = <TResponse, TPayload>(
             },
           })
           .catch(() => {
-            showMessage(t('An unexpected error occurred while refreshing the data', { ns: 'errors' }), 'error')
+            showMessage(t('unexpected_error_refreshing_data', { ns: 'errors' }), 'alert')
           })
       }
     },

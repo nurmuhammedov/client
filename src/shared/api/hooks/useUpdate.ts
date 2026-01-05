@@ -20,7 +20,7 @@ export const useUpdate = <TResponse, TPayload>(
   const mutation = useMutation<TResponse, Error, InternalVariables>({
     mutationFn: ({ payload, id }) => {
       if (!id) {
-        showMessage(t('ID is required to perform update operation', { ns: 'errors' }), 'error')
+        showMessage(t('id_required_for_update', { ns: 'errors' }), 'alert')
         return Promise.reject()
       } else {
         return method === 'put'
@@ -44,7 +44,7 @@ export const useUpdate = <TResponse, TPayload>(
             },
           })
           .catch(() => {
-            showMessage(t('An unexpected error occurred while refreshing the data', { ns: 'errors' }), 'error')
+            showMessage(t('unexpected_error_refreshing_data', { ns: 'errors' }), 'alert')
           })
       }
     },

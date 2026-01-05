@@ -1,21 +1,9 @@
 import React, { ReactPortal } from 'react'
 import { createPortal } from 'react-dom'
-import { Toaster } from 'sonner'
+import { Toaster as HotToaster } from 'react-hot-toast'
 
-const Alert: React.FC = (): ReactPortal =>
+export const Toaster: React.FC = (): ReactPortal =>
   createPortal(
-    <Toaster
-      expand={false}
-      richColors
-      toastOptions={{
-        classNames: {
-          toast: 'font-golos select-none text-base cursor-pointer',
-          title: 'font-golos text-base',
-          description: 'font-golos text-base',
-        },
-      }}
-    />,
-    document.querySelector('#alert') as HTMLElement
+    <HotToaster position="top-right" reverseOrder={false} />,
+    (document.querySelector('#alert') as HTMLElement) || document.body
   )
-
-export { Alert as Toaster }

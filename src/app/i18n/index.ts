@@ -15,6 +15,7 @@ i18n
     interpolation: {
       escapeValue: false,
     },
+    defaultNS: 'common',
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },

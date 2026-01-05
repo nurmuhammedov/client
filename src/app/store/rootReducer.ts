@@ -1,7 +1,7 @@
-import { reducer as authReducer } from './authentication/authentication.slice'
+import { reducer as authReducer } from './auth/auth.slice'
 import { reducer as demoReducer } from './demo/demo.slice'
 
 export const rootReducer = {
-  authentication: authReducer,
+  auth: authReducer,
   demo: demoReducer,
 }

@@ -16,7 +16,7 @@ export const useDelete = <TResponse>(
       if (id) {
         return CommonService.deleteData<TResponse>(endpoint, id)
       } else {
-        showMessage(t('ID is required to perform delete operation', { ns: 'errors' }), 'error')
+        showMessage(t('id_required_for_delete', { ns: 'errors' }), 'alert')
         return Promise.reject()
       }
     },
@@ -32,7 +32,7 @@ export const useDelete = <TResponse>(
             },
           })
           .catch(() => {
-            showMessage(t('An unexpected error occurred while refreshing the data', { ns: 'errors' }), 'error')
+            showMessage(t('unexpected_error_refreshing_data', { ns: 'errors' }), 'alert')
           })
       }
 

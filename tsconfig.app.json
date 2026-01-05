@@ -54,7 +54,6 @@
       "@topcoder/pages": ["pages"],
       "@topcoder/app/*": ["app/*"],
       "@topcoder/app": ["app"]
-      //"@topcoder/*": ["*"]
     }
   },
   "include": ["src"]

@@ -12,7 +12,7 @@ export const usePaginatedData = <TResponse>(
   staleTime?: number
 ) => {
   const { i18n } = useTranslation()
-  const { user } = useTypedSelector((state) => state.authentication)
+  const { user } = useTypedSelector((state) => state.auth)
   const queryKeys = Array.isArray(queryKey) ? queryKey : [queryKey]
 
   const queryMethods = useQuery<IListResponse<TResponse>, Error>({
@@ -22,18 +22,20 @@ export const usePaginatedData = <TResponse>(
     staleTime,
   })
 
-  const { results, totalPages, count } = queryMethods.data || {}
+  const { content, page } = queryMethods.data || {}
 
   const data = Array.isArray(queryMethods.data)
-    ? (queryMethods.data as unknown as TResponse)
-    : Array.isArray(results)
-      ? results
-      : ([] as unknown as TResponse)
+    ? (queryMethods.data as unknown as TResponse[])
+    : Array.isArray(content)
+      ? content
+      : ([] as unknown as TResponse[])
 
   return {
     ...queryMethods,
     data: data,
-    count: count,
-    totalPages: totalPages,
+    page: page || {
+      totalElements: 0,
+      totalPages: 1,
+    },
   }
 }

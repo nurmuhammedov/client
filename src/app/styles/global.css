@@ -13,8 +13,14 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 15%;
 
+    --teal: 188 98% 24%;
+    --teal-foreground: 188 30% 96%;
+
     --primary: 225 77% 45%;
     --primary-foreground: 0 0% 100%;
+
+    /*--primary: 188 98% 24%;*/
+    /*--primary-foreground: 188 30% 96%;*/
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 0 0% 15%;
@@ -30,7 +36,8 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 225 77% 45%;
+    /*--ring: 225 77% 45%;*/
+    --ring: 188 98% 24%;
 
     --chart-1: 225 77% 45%;
     --chart-2: 101 65% 44%;
@@ -40,62 +47,18 @@
 
     --radius: 0.5rem;
 
-    --sidebar-background: 225 77% 45%;
+    --sidebar-background: 188 98% 24%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 100%;
-    --sidebar-accent-foreground: 225 77% 45%;
-    --sidebar-primary: 0 0% 100%;
-    --sidebar-primary-foreground: 225 77% 45%;
-    --sidebar-border: 0 0% 100%;
-    --sidebar-ring: 224 71% 58%;
+    --sidebar-primary: 188 90% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96.5%;
+    --sidebar-accent-foreground: 0 0% 15%;
+    /*--sidebar-border: 188 50% 15%;*/
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 188 90% 50%;
   }
 
   .dark {
-    --background: 0 0% 9%;
-    --foreground: 0 0% 98%;
-
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 12%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 225 77% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 0 0% 18%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 18%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 0 0% 18%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 5 72% 55%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 225 77% 60%;
-
-    --chart-1: 225 77% 60%;
-    --chart-2: 101 65% 55%;
-    --chart-3: 43 96% 65%;
-    --chart-4: 5 72% 55%;
-    --chart-5: 217 91% 70%;
-
-    --sidebar-background: 0 0% 9%;
-    --sidebar-foreground: 240 5% 96%;
-
-    --sidebar-primary: 225 77% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-
-    --sidebar-accent: 0 0% 18%;
-    --sidebar-accent-foreground: 240 5% 96%;
-
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 225 77% 60%;
   }
 
   *,
@@ -125,5 +88,17 @@
 
   .scrollbar-x-hidden {
     height: 0;
+  }
+}
+
+/*---break---*/
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
