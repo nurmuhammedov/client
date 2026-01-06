@@ -66,7 +66,7 @@ export function Pagination({ totalPages = 1, totalElements = 0, className }: Pag
           onClick={handleFirstPage}
           disabled={page <= 1}
           className={cn(
-            'flex h-9 w-9 items-center justify-center rounded-md border border-input bg-white transition-colors hover:bg-accent hover:text-accent-foreground',
+            'flex aspect-square h-9 w-9 items-center justify-center rounded-md border border-input bg-white transition-colors hover:bg-accent hover:text-accent-foreground',
             page <= 1 && 'pointer-events-none opacity-50'
           )}
         >
@@ -91,12 +91,12 @@ export function Pagination({ totalPages = 1, totalElements = 0, className }: Pag
           previousClassName="mr-1"
           nextClassName="ml-1"
           previousLinkClassName={cn(
-            'flex h-9 w-9 items-center justify-center rounded-md border border-input bg-white hover:bg-accent hover:text-accent-foreground transition-colors',
-            page <= 1 && 'pointer-events-none opacity-50'
+            'flex h-9 w-9 items-center justify-center rounded-md border border-input !bg-white !hover:bg-accent !hover:text-accent-foreground !transition-colors',
+            page <= 1 && 'pointer-events-none opacity-80'
           )}
           nextLinkClassName={cn(
-            'flex h-9 w-9 items-center justify-center rounded-md border border-input bg-white hover:bg-accent hover:text-accent-foreground transition-colors',
-            page >= totalPages && 'pointer-events-none opacity-50'
+            'flex h-9 w-9 items-center justify-center rounded-md border border-input !bg-white !hover:bg-accent !hover:text-accent-foreground !transition-colors',
+            page >= totalPages && 'pointer-events-none opacity-80'
           )}
           breakClassName="flex rounded-md border items-center justify-center border-input bg-white"
           breakLinkClassName="flex h-9 w-9 items-center justify-center text-sm text-muted-foreground"
@@ -107,7 +107,7 @@ export function Pagination({ totalPages = 1, totalElements = 0, className }: Pag
           onClick={handleLastPage}
           disabled={page >= totalPages}
           className={cn(
-            'flex h-9 w-9 items-center justify-center rounded-md border border-input bg-white transition-colors hover:bg-accent hover:text-accent-foreground',
+            'flex aspect-square h-9 w-9 items-center justify-center rounded-md border border-input bg-white transition-colors hover:bg-accent hover:text-accent-foreground',
             page >= totalPages && 'pointer-events-none opacity-50'
           )}
         >
