@@ -19,6 +19,6 @@ export const AuthService = {
 
   async logout() {
     const response = await apiClient.post<IAxiosResponse<TypeAny>>('auth/logout')
-    return response.data.message || 'successfully!'
+    return response.data.message || 'success'
   },
 }

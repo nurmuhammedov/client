@@ -7,7 +7,7 @@ interface ContentLoaderProps extends React.HTMLAttributes<HTMLDivElement> {
   opacity?: number
 }
 
-export const ContentLoader = ({ className, isLoading = true, opacity = 90, ...props }: ContentLoaderProps) => {
+export const ContentLoader = ({ className, isLoading = true, opacity = 0, ...props }: ContentLoaderProps) => {
   if (!isLoading) return null
 
   return (

@@ -9,7 +9,7 @@ export const useUpdate = <TResponse, TPayload>(
   method: 'put' | 'patch' = 'put',
   successMessage?: string
 ) => {
-  const { t } = useTranslation(['messages', 'errors'])
+  const { t } = useTranslation(['common', 'errors'])
   const queryClient = useQueryClient()
 
   type InternalVariables = {

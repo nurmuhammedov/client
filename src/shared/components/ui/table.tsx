@@ -1,17 +1,19 @@
 import { cn } from '@topcoder/lib'
 import * as React from 'react'
 
-const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
-  ({ className, ...props }, ref) => (
-    <div className="relative h-full w-full flex-1 overflow-auto rounded-md bg-white p-3">
-      <table
-        ref={ref}
-        className={cn('w-full caption-bottom border-collapse border-spacing-0 text-sm', className)}
-        {...props}
-      />
-    </div>
-  )
-)
+interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
+  isLoading?: boolean
+}
+
+const Table = React.forwardRef<HTMLTableElement, TableProps>(({ className, isLoading, ...props }, ref) => (
+  <div className="relative h-full w-full flex-1 overflow-auto rounded-md bg-white p-3">
+    <table
+      ref={ref}
+      className={cn('w-full caption-bottom border-collapse border-spacing-0 text-sm', isLoading && 'h-full', className)}
+      {...props}
+    />
+  </div>
+))
 Table.displayName = 'Table'
 
 const TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
@@ -43,7 +45,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
       ref={ref}
       className={cn(
         'rounded-sm border-neutral-200 transition-colors data-[state=selected]:bg-muted',
-        !disableZebra ? 'even:bg-neutral-150/50' : '',
+        !disableZebra ? 'even:bg-neutral-150/40' : '',
         className
       )}
       {...props}

@@ -8,7 +8,7 @@ export const useAdd = <TResponse, TPayload>(
   invalidateQueryKey: string | string[] = [],
   successMessage?: string
 ) => {
-  const { t } = useTranslation(['messages', 'errors'])
+  const { t } = useTranslation(['common', 'errors'])
   const queryClient = useQueryClient()
 
   return useMutation<TResponse, Error, TPayload>({

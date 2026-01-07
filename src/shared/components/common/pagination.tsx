@@ -10,6 +10,7 @@ interface PaginationProps {
   totalPages?: number
   totalElements?: number
   className?: string
+  isLoading?: boolean
 }
 
 const PAGE_SIZE_OPTIONS = [
@@ -22,7 +23,7 @@ const PAGE_SIZE_OPTIONS = [
   { id: 1000, name: '1000' },
 ]
 
-export function Pagination({ totalPages = 1, totalElements = 0, className }: PaginationProps) {
+export function Pagination({ totalPages = 1, totalElements = 0, className, isLoading = false }: PaginationProps) {
   const { t } = useTranslation('common')
 
   const [{ page, size: pageSize }, setFilters] = useQueryStates({
@@ -45,6 +46,8 @@ export function Pagination({ totalPages = 1, totalElements = 0, className }: Pag
   const handleLastPage = () => {
     setFilters({ page: totalPages }).catch(noop)
   }
+
+  if (isLoading) return null
 
   return (
     <div className={cn('mt-2 flex flex-col-reverse items-center justify-between gap-2 lg:flex-row', className)}>

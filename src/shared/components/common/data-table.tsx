@@ -1,7 +1,7 @@
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import {
+  ContentLoader,
   Pagination,
-  Skeleton,
   Table,
   TableBody,
   TableCell,
@@ -39,7 +39,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <Fragment>
-      <Table>
+      <Table isLoading={isLoading}>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -55,15 +55,11 @@ export function DataTable<TData, TValue>({
         </TableHeader>
         <TableBody>
           {isLoading ? (
-            Array.from({ length: 20 }).map((_, index) => (
-              <TableRow key={index}>
-                {columns.map((_column, cellIndex) => (
-                  <TableCell key={cellIndex}>
-                    <Skeleton className="h-6 w-full" />
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
+            <TableRow className="relative">
+              <TableCell colSpan={columns.length} className="h-24 text-center">
+                <ContentLoader opacity={0} />
+              </TableCell>
+            </TableRow>
           ) : table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
@@ -81,7 +77,9 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
-      {totalPages && totalPages > 0 ? <Pagination totalPages={totalPages} totalElements={totalElements} /> : null}
+      {totalPages && totalPages > 0 ? (
+        <Pagination isLoading={isLoading} totalPages={totalPages} totalElements={totalElements} />
+      ) : null}
     </Fragment>
   )
 }

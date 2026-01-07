@@ -239,7 +239,7 @@ export const useAppRoutes = () => {
             children: [
               {
                 index: true,
-                element: <h1>Employees</h1>,
+                element: <App />,
               },
             ],
           },

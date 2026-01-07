@@ -33,6 +33,8 @@ export const usePaginatedData = <TResponse>(
   return {
     ...queryMethods,
     data: data,
+    totalElements: page?.totalElements || 0,
+    totalPages: page?.totalPages || 1,
     page: page || {
       totalElements: 0,
       totalPages: 1,
