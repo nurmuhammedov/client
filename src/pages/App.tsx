@@ -1,50 +1,59 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@topcoder/components'
+import { ColumnDef } from '@tanstack/react-table'
+import { DataTable } from '@topcoder/components'
+import { TypeAny } from '@topcoder/types'
 
 const users = [
   { id: 1, name: 'Ali Valiyev', role: 'Admin' },
   { id: 2, name: 'Olim Hakimov', role: 'User' },
   { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
+  { id: 2, name: 'Olim Hakimov', role: 'User' },
 ]
 
 export function App() {
-  return (
-    // <div className="rounded-md border">
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>ID</TableHead>
-          <TableHead>Ism</TableHead>
-          <TableHead>Rol</TableHead>
-          <TableHead>Rol</TableHead>
-          <TableHead>Rol</TableHead>
-          <TableHead>Rol</TableHead>
-          <TableHead>Rol</TableHead>
-          <TableHead>Rol</TableHead>
-          <TableHead>Rol</TableHead>
-          <TableHead>Rol</TableHead>
-          <TableHead>Rol</TableHead>
-          <TableHead>Rol</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {users.map((user) => (
-          <TableRow key={user.id}>
-            <TableCell>{user.id}</TableCell>
-            <TableCell>{user.name}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell>{user.role}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-    // </div>
-  )
+  const columns: ColumnDef<TypeAny, TypeAny>[] = [
+    {
+      accessorKey: 'id',
+      header: 'Ekspert tashkiloti nomi',
+    },
+    {
+      accessorKey: 'name',
+      header: 'Ekspert tashkiloti STIRi',
+    },
+    {
+      accessorKey: 'name',
+      header: 'Tashkilot nomi',
+    },
+    {
+      accessorKey: 'role',
+      header: 'Tashkilot STIR',
+    },
+    {
+      accessorKey: 'role',
+      header: 'Reysterdagi obyektning nomi',
+    },
+    {
+      accessorKey: 'name',
+      header: 'Tashkilot nomi',
+    },
+    {
+      accessorKey: 'role',
+      header: 'Tashkilot STIR',
+    },
+    {
+      accessorKey: 'role',
+      header: 'Reysterdagi obyektning nomi',
+    },
+  ]
+
+  return <DataTable columns={columns} data={users} totalElements={100} totalPages={1000000} />
 }

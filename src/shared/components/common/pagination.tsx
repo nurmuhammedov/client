@@ -47,7 +47,7 @@ export function Pagination({ totalPages = 1, totalElements = 0, className }: Pag
   }
 
   return (
-    <div className={cn('flex flex-col-reverse items-center justify-between gap-2 lg:flex-row', className)}>
+    <div className={cn('mt-2 flex flex-col-reverse items-center justify-between gap-2 lg:flex-row', className)}>
       <div className="flex w-full items-center justify-between gap-4 lg:w-auto lg:justify-start">
         <CustomSelect
           options={PAGE_SIZE_OPTIONS}
