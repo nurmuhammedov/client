@@ -15,6 +15,7 @@
   "cancel": "Bekor qilish",
   "deleting": "O‘chirilmoqda...",
   "total_elements": "Jami {{count}} ta ma’lumot",
+  "serial_number": "T/R",
   "user_role": {
     "INDIVIDUAL": "Jismoniy shaxs",
     "LEGAL": "Yuridik shaxs",

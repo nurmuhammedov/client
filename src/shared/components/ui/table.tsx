@@ -6,10 +6,15 @@ interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
 }
 
 const Table = React.forwardRef<HTMLTableElement, TableProps>(({ className, isLoading, ...props }, ref) => (
-  <div className="relative h-full w-full flex-1 overflow-auto rounded-md bg-white p-3">
+  <div className="relative h-full w-full flex-1 overflow-auto rounded-md bg-white p-3 !pt-0">
+    <div className="sticky top-0 h-3 w-full bg-white"></div>
     <table
       ref={ref}
-      className={cn('w-full caption-bottom border-collapse border-spacing-0 text-sm', isLoading && 'h-full', className)}
+      className={cn(
+        'w-full caption-bottom border-separate border-spacing-0 rounded-lg text-sm',
+        isLoading && 'h-full',
+        className
+      )}
       {...props}
     />
   </div>
@@ -59,7 +64,7 @@ const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<
     <th
       ref={ref}
       className={cn(
-        'h-10 border-x border-neutral-200/50 bg-background px-3 py-4 text-left align-middle font-semibold text-neutral-950 first:rounded-l-lg first:border-l-0 last:rounded-r-lg last:border-r-0 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
+        'sticky top-1.5 z-10 h-10 border-x border-neutral-200/50 bg-background px-3 py-4 text-left align-middle font-semibold text-neutral-950 first:rounded-l-lg first:border-l-0 last:rounded-r-lg last:border-r-0 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
         className
       )}
       {...props}

@@ -87,12 +87,14 @@ export function DataTableRowActions({
         )}
       </div>
 
-      <DeleteConfirmationDialog
-        isOpen={isDeleteDialogOpen}
-        setIsOpen={setIsDeleteDialogOpen}
-        onConfirm={handleConfirmDelete}
-        isLoading={isPending}
-      />
+      {deleteEndpoint && (
+        <DeleteConfirmationDialog
+          isOpen={isDeleteDialogOpen}
+          setIsOpen={setIsDeleteDialogOpen}
+          onConfirm={handleConfirmDelete}
+          isLoading={isPending}
+        />
+      )}
     </>
   )
 }
