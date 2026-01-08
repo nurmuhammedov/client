@@ -19,8 +19,8 @@ export const CustomAlert: React.FC<AlertToastProps> = ({ title, type = 'success'
       className={cn(
         'pointer-events-auto relative flex w-fit max-w-[25rem] cursor-pointer select-none items-center gap-2 rounded-lg bg-white p-3 shadow-lg transition-all',
         visible
-          ? 'duration-[400ms] ease-in-out animate-in fade-in slide-in-from-top-[10px]'
-          : 'duration-[200ms] scale-0 opacity-0 ease-in'
+          ? 'duration-400 ease-in-out animate-in fade-in slide-in-from-top-[10px]'
+          : 'scale-0 opacity-0 duration-200 ease-in'
       )}
     >
       <div

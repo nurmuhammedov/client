@@ -9,7 +9,7 @@ import { AppSidebar } from './parts/app-sidebar'
 import { Header } from './parts/header'
 
 export const AppLayout = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['common', 'errors', 'sidebar', 'form', 'labels', 'options'])
   const { isLoading } = useTypedSelector((state) => state.auth)
 
   if (isLoading) {

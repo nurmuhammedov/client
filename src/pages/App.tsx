@@ -51,7 +51,6 @@ export function App() {
 
   return (
     <>
-      <div className="mb-2 h-[200px] bg-white"></div>
       <DataTable
         columns={columns}
         isLoading={isLoading}

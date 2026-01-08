@@ -17,7 +17,7 @@ export const routeByRole = (role: UserRole | undefined | null): string => {
     case UserRole.INSPECTOR:
       return '/inspector/appeals'
     case UserRole.REGIONAL:
-      return '/reginal/appeals'
+      return '/regional/appeals'
     case UserRole.MANAGER:
       return '/manager/appeals'
     case UserRole.HEAD:
