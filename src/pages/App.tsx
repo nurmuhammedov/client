@@ -2,7 +2,6 @@ import { ColumnDef } from '@tanstack/react-table'
 import { DataTable, DataTableRowActions } from '@topcoder/components'
 import { TypeAny } from '@topcoder/types'
 
-// 200 ta soxta ma'lumot generatsiya qilish
 const mockData = Array.from({ length: 200 }).map((_, index) => {
   const types = [
     'Kompyuter texnikasi',
@@ -15,19 +14,15 @@ const mockData = Array.from({ length: 200 }).map((_, index) => {
 
   return {
     id: index + 1,
-    equipmentType: types[index % types.length], // Har xil tur bo'lishi uchun aylantiramiz
-    name: `${names[index % names.length]} - Model ${index + 1}`, // Har xil nom bo'lishi uchun
+    equipmentType: types[index % types.length],
+    name: `${names[index % names.length]} - Model ${index + 1}`,
   }
 })
 
 export function App() {
-  // const [page] = useQueryState('page', parseAsString.withDefault('1'))
-  // const [size] = useQueryState('size', parseAsString.withDefault(String(PAGE_SIZE)))
-
   const data = mockData
   const isLoading = false
   const totalElements = mockData.length
-  // Agar pagination ishlayotganini ko'rmoqchi bo'lsangiz, buni 20 (200/10) qilib qo'yishingiz mumkin
   const totalPages = Math.ceil(totalElements / 10)
 
   const onEdit = (data: TypeAny) => console.log(data, 'onEdit')
@@ -55,9 +50,6 @@ export function App() {
           onView={onView}
         />
       ),
-      meta: {
-        className: 'w-1',
-      } as any,
     },
   ]
 

@@ -10,6 +10,7 @@ import {
   TableRow,
 } from '@topcoder/components'
 import { PAGE_SIZE } from '@topcoder/config'
+import { TypeAny } from '@topcoder/types'
 import { parseAsInteger, useQueryState } from 'nuqs'
 import { Fragment, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -37,7 +38,20 @@ export function DataTable<TData, TValue>({
   const [size] = useQueryState('size', parseAsInteger.withDefault(Number(PAGE_SIZE)))
 
   const tableColumns = useMemo(() => {
-    if (!withSerial) return columns
+    const processedColumns = columns.map((column) => {
+      if (column.id === 'actions') {
+        return {
+          ...column,
+          meta: {
+            ...column.meta,
+            className: `${(column.meta as TypeAny)?.className ?? ''} w-[1%]`,
+          },
+        }
+      }
+      return column
+    })
+
+    if (!withSerial) return processedColumns
 
     const serialColumn: ColumnDef<TData, TValue> = {
       id: 'serial_number',
@@ -48,7 +62,7 @@ export function DataTable<TData, TValue>({
       },
     }
 
-    return [serialColumn, ...columns]
+    return [serialColumn, ...processedColumns]
   }, [columns, withSerial, page, size, t])
 
   // eslint-disable-next-line react-hooks/incompatible-library
@@ -61,12 +75,12 @@ export function DataTable<TData, TValue>({
 
   return (
     <Fragment>
-      <Table isLoading={isLoading} className={''}>
+      <Table isLoading={isLoading}>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
-                const meta = header.column.columnDef.meta as any
+                const meta = header.column.columnDef.meta as TypeAny
                 return (
                   <TableHead key={header.id} className={meta?.className}>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
@@ -87,7 +101,7 @@ export function DataTable<TData, TValue>({
             table.getRowModel().rows.map((row) => (
               <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                 {row.getVisibleCells().map((cell) => {
-                  const meta = cell.column.columnDef.meta as any
+                  const meta = cell.column.columnDef.meta as TypeAny
                   return (
                     <TableCell key={cell.id} className={meta?.className}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}

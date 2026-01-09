@@ -6,7 +6,7 @@ interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
 }
 
 const Table = React.forwardRef<HTMLTableElement, TableProps>(({ className, isLoading, ...props }, ref) => (
-  <div className="relative h-full w-full flex-1 overflow-auto rounded-md bg-white p-3 !pt-0">
+  <div className="relative h-full min-h-[200px] w-full flex-1 overflow-auto rounded-md bg-white p-3 !pt-0">
     <div className="sticky top-0 h-3 w-full bg-white"></div>
     <table
       ref={ref}
