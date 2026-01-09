@@ -22,7 +22,9 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(({ className, isLoa
 Table.displayName = 'Table'
 
 const TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-  ({ className, ...props }, ref) => <thead ref={ref} className={cn('rounded-lg', className)} {...props} />
+  ({ className, ...props }, ref) => (
+    <thead ref={ref} className={cn('sticky top-1.5 z-10 rounded-lg', className)} {...props} />
+  )
 )
 TableHeader.displayName = 'TableHeader'
 
@@ -64,7 +66,7 @@ const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<
     <th
       ref={ref}
       className={cn(
-        'sticky top-1.5 z-10 h-10 border-x border-neutral-200/50 bg-background px-3 py-4 text-left align-middle font-semibold text-neutral-950 first:rounded-l-lg first:border-l-0 last:rounded-r-lg last:border-r-0 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
+        'border-x border-neutral-200/50 bg-background px-3 py-4 text-left align-middle font-semibold text-neutral-950 first:rounded-l-lg first:border-l-0 last:rounded-r-lg last:border-r-0 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
         className
       )}
       {...props}
