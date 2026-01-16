@@ -5,7 +5,7 @@ interface IllustrationProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export const ServerDownIcon = forwardRef<SVGSVGElement, IllustrationProps>(
-  ({ color = '#016b7b', width = '100%', height = 'auto', className, style, ...props }, ref) => {
+  ({ color = '#016b7b', width = '100%', height, className, style, ...props }, ref) => {
     return (
       <svg
         ref={ref}

@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tsEslint from 'typescript-eslint'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default tsEslint.config(
   { ignores: ['dist'] },
@@ -26,5 +27,6 @@ export default tsEslint.config(
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
     },
-  }
+  },
+  eslintConfigPrettier
 )

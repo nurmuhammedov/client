@@ -55,6 +55,7 @@ export function App() {
         meta: {
           filter: {
             key: 'search1',
+            type: 'search',
           },
         },
       },
