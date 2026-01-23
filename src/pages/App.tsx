@@ -1,10 +1,11 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { DataTable, DataTableRowActions } from '@topcoder/components'
+import { Button, DataTable, DataTableRowActions } from '@topcoder/components'
 import { TypeAny } from '@topcoder/types'
 import { parseAsString, useQueryState } from 'nuqs'
-import { useMemo } from 'react' // useMemo import qilindi
+import { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const mockData = Array.from({ length: 200 }).map((_, index) => {
+const mockData = Array.from({ length: 0 }).map((_, index) => {
   const types = [
     'Kompyuter texnikasi',
     'Printer va nusxalash',
@@ -23,10 +24,8 @@ const mockData = Array.from({ length: 200 }).map((_, index) => {
 
 export function App() {
   const data = mockData
-  // Bu yerdagi parser ham stabil bo'lishi kerak yoki oddiy holatda qoldirsa ham bo'ladi,
-  // chunki bu o'qish uchun.
   const [key] = useQueryState('search', parseAsString.withDefault(''))
-
+  const navigate = useNavigate()
   console.log(key, 'key')
   const isLoading = false
   const totalElements = mockData.length
@@ -35,27 +34,16 @@ export function App() {
   const onEdit = (data: TypeAny) => console.log(data, 'onEdit')
   const onView = (data: TypeAny) => console.log(data, 'onView')
 
-  // MUHIM: columns o'zgaruvchisini useMemo ichiga olamiz.
   const columns = useMemo<ColumnDef<TypeAny, TypeAny>[]>(
     () => [
       {
         accessorKey: 'equipmentType',
-        header: 'Qurilmaning turi',
+        header: 'Test',
         meta: {
           filter: {
             key: 'search',
             type: 'search',
             options: mockData,
-          },
-        },
-      },
-      {
-        accessorKey: 'name',
-        header: 'Qurilmaning quyi turi',
-        meta: {
-          filter: {
-            key: 'search1',
-            type: 'search',
           },
         },
       },
@@ -73,11 +61,14 @@ export function App() {
         ),
       },
     ],
-    [] // Hech qanday tashqi o'zgaruvchiga bog'liq emas (onEdit/onView dan tashqari, ular o'zgarmas deb hisoblaymiz)
+    []
   )
 
   return (
     <>
+      <div className="mb-2 flex items-center justify-end gap-2">
+        <Button onClick={() => navigate('form')}>Form</Button>
+      </div>
       <DataTable
         columns={columns}
         showFilters={true}

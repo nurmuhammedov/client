@@ -13,6 +13,7 @@
   "delete_description": "Ushbu amalni tasdiqlash orqali maʼlumot serverdan oʻchiriladi!",
   "delete": "O‘chirish",
   "cancel": "Bekor qilish",
+  "no_results": "Ma’lumotlar topilmadi!",
   "deleting": "O‘chirilmoqda...",
   "total_elements": "Jami {{count}} ta ma’lumot",
   "serial_number": "T/R",

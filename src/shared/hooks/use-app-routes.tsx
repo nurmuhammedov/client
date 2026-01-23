@@ -3,6 +3,7 @@ import { IS_DEV } from '@topcoder/config'
 import { UserRole } from '@topcoder/constants'
 import { useTypedSelector } from '@topcoder/hooks'
 import { routeByRole } from '@topcoder/lib'
+import { TestForm } from '@topcoder/pages/TestFrom.tsx'
 import { lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Navigate, useRoutes } from 'react-router-dom'
@@ -211,6 +212,10 @@ export const useAppRoutes = () => {
               {
                 index: true,
                 element: <App />,
+              },
+              {
+                path: 'form',
+                element: <TestForm />,
               },
             ],
           },
